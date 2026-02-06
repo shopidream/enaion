@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에나이온(Enaion) — 문의하기</title>
+    <meta name="description" content="에나이온에 문의하세요.">
+    <link rel="icon" type="image/png" sizes="64x64" href="./assets/Enaion-Favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="nav nav-scrolled">
+        <div class="nav-inner">
+            <a href="./ko.html" class="nav-logo">
+                <img src="./assets/Enaion-White-Logo.png" alt="Enaion" class="nav-logo-img">
+            </a>
+            <div class="nav-right">
+                <a href="./contact-en.html" class="nav-lang" onclick="sessionStorage.setItem('lang_override','1')">EN</a>
+                <a href="mailto:info@enaion.com" class="nav-contact">info@enaion.com</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="contact-page">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="contact-left">
+                    <h1 class="contact-title">무엇이든 이야기해주세요.</h1>
+                    <p class="contact-desc">지금 붙잡고 있는 일이 무엇인지부터 시작하면 됩니다.</p>
+                    <div class="contact-categories">
+                        <div class="contact-cat">
+                            <span class="contact-cat-label">사업제휴</span>
+                            <span class="contact-cat-text">같이 굴려볼까요?</span>
+                        </div>
+                        <div class="contact-cat">
+                            <span class="contact-cat-label">투자제안</span>
+                            <span class="contact-cat-text">이 구조, 같이 키워볼래요?</span>
+                        </div>
+                        <div class="contact-cat">
+                            <span class="contact-cat-label">커리어</span>
+                            <span class="contact-cat-text">저희랑 같이 일하실래요?</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <div class="contact-form-wrap" id="formWrap">
+                        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+                            <input type="hidden" name="access_key" value="10b55c7a-5b22-47ef-98e5-8befebda5b60">
+                            <input type="hidden" name="subject" value="Enaion 문의">
+                            <input type="hidden" name="from_name" value="Enaion Contact Form">
+                            <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+
+                            <div class="form-group">
+                                <label class="form-label">카테고리</label>
+                                <div class="form-select-wrap">
+                                    <select name="category" class="form-select" id="categorySelect">
+                                        <option value="일반 문의">일반 문의</option>
+                                        <option value="사업제휴">사업제휴</option>
+                                        <option value="투자제안">투자제안</option>
+                                        <option value="커리어">커리어</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">이름 *</label>
+                                <input type="text" name="name" required class="form-input" placeholder="홍길동">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">이메일 *</label>
+                                <input type="email" name="email" required class="form-input" placeholder="you@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">회사 / 소속</label>
+                                <input type="text" name="company" class="form-input" placeholder="선택사항">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">내용 *</label>
+                                <textarea name="message" required class="form-textarea" rows="5" placeholder="어떤 이야기든 괜찮습니다."></textarea>
+                            </div>
+
+                            <button type="submit" class="form-submit" id="submitBtn">보내기</button>
+                        </form>
+                    </div>
+                    <div class="contact-success" id="successMsg" style="display:none;">
+                        <div class="success-icon">✓</div>
+                        <h3>감사합니다.</h3>
+                        <p>메시지가 전달되었습니다.<br>빠르게 연락드리겠습니다.</p>
+                        <a href="./ko.html" class="success-back">← 돌아가기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <span>&copy; 2025 Enaion. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set category from URL param
+        const params = new URLSearchParams(window.location.search);
+        const cat = params.get('cat');
+        if (cat) {
+            const select = document.getElementById('categorySelect');
+            for (let opt of select.options) {
+                if (opt.value === cat) { opt.selected = true; break; }
+            }
+        }
+
+        // Form submit
+        const form = document.getElementById('contactForm');
+        const btn = document.getElementById('submitBtn');
+        const formWrap = document.getElementById('formWrap');
+        const successMsg = document.getElementById('successMsg');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.textContent = '전송 중...';
+
+            try {
+                const res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(Object.fromEntries(new FormData(form)))
+                });
+                if (res.ok) {
+                    formWrap.style.display = 'none';
+                    successMsg.style.display = 'block';
+                } else {
+                    btn.textContent = '전송 실패 — 다시 시도해주세요';
+                    btn.disabled = false;
+                }
+            } catch {
+                btn.textContent = '전송 실패 — 다시 시도해주세요';
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
