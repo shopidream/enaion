@@ -3,7 +3,7 @@
    Dark · Clean · Conversational
    ═══════════════════════════════════════════ */
 
-:root {
+   :root {
     --bg-primary: #0a0a0c;
     --bg-secondary: #111114;
     --bg-card: #141418;
@@ -180,6 +180,15 @@ a {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.hero-tagline {
+    display: block;
+    font-size: clamp(15px, 1.8vw, 18px);
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0;
+    margin-top: 16px;
 }
 
 .hero-problem {
