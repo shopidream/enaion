@@ -16,23 +16,27 @@
     --accent: #4af;
     --accent-dim: rgba(68, 170, 255, 0.12);
     --accent-glow: rgba(68, 170, 255, 0.06);
-    --font-body: 'Sora', -apple-system, sans-serif;
-    --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
+    --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    --font-mono: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Korean */
-html[lang="ko"] body,
-html[lang="ko"] .hero-problem,
-html[lang="ko"] .hero-answer,
-html[lang="ko"] .system-scenario,
-html[lang="ko"] .system-solution,
-html[lang="ko"] .what-problem,
-html[lang="ko"] .what-answer,
-html[lang="ko"] .connect-card-title,
-html[lang="ko"] .connect-card-desc {
-    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f7;
+    --bg-card: #f5f5f7;
+    --bg-card-hover: #ebebed;
+    --border: #d1d1d6;
+    --border-light: #c7c7cc;
+    --text-primary: #1a1a1c;
+    --text-secondary: #3a3a3c;
+    --text-muted: #6a6a6c;
+    --accent: #0066cc;
+    --accent-dim: rgba(0, 102, 204, 0.1);
+    --accent-glow: rgba(0, 102, 204, 0.05);
 }
+
+/* Pretendard supports both Korean and English */
 
 *, *::before, *::after {
     margin: 0;
@@ -84,6 +88,10 @@ a {
     padding: 14px 0;
 }
 
+[data-theme="light"] .nav-scrolled {
+    background: rgba(255, 255, 255, 0.88);
+}
+
 .nav-inner {
     max-width: 1080px;
     margin: 0 auto;
@@ -109,14 +117,33 @@ a {
     gap: 20px;
 }
 
-.nav-lang {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
+.theme-toggle {
+    background: none;
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: 4px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.nav-lang {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 12px;
     transition: all 0.3s;
 }
 
@@ -127,8 +154,8 @@ a {
 
 .nav-contact {
     font-family: var(--font-mono);
-    font-size: 15px;
-    color: var(--text-muted);
+    font-size: 16px;
+    color: var(--text-secondary);
     transition: color 0.3s;
 }
 
@@ -243,7 +270,7 @@ a {
     align-items: center;
     gap: 10px;
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-muted);
 }
 
@@ -333,17 +360,25 @@ a {
     filter: brightness(1);
 }
 
+[data-theme="light"] .showcase-slide img {
+    filter: brightness(1);
+}
+
+[data-theme="light"] .showcase-slide:hover img {
+    filter: brightness(0.95);
+}
+
 .showcase-slide span {
     position: absolute;
     bottom: 12px;
     left: 16px;
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-primary);
     background: rgba(10, 10, 12, 0.7);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 4px;
     letter-spacing: 0.04em;
 }
@@ -407,25 +442,22 @@ a {
 
 .system-type {
     font-family: var(--font-mono);
-    font-size: 15px;
+    font-size: 16px;
     color: var(--accent);
     margin-bottom: 24px;
     letter-spacing: 0.02em;
 }
 
-html[lang="ko"] .system-type {
-    font-family: 'Noto Sans KR', sans-serif;
-}
 
 .system-scenario {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--text-secondary);
     line-height: 1.9;
     margin-bottom: 16px;
 }
 
 .system-solution {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--text-primary);
     line-height: 1.9;
     margin-bottom: 24px;
@@ -437,7 +469,7 @@ html[lang="ko"] .system-type {
     align-items: center;
     gap: 6px;
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
     color: var(--accent);
     padding: 6px 0;
     border-bottom: 1px solid transparent;
@@ -478,6 +510,15 @@ html[lang="ko"] .system-type {
 
 .system-card-inner:hover .visual-img {
     filter: brightness(1);
+    transform: scale(1.03);
+}
+
+[data-theme="light"] .visual-img {
+    filter: brightness(1);
+}
+
+[data-theme="light"] .system-card-inner:hover .visual-img {
+    filter: brightness(0.95);
     transform: scale(1.03);
 }
 
@@ -527,7 +568,7 @@ html[lang="ko"] .system-type {
 
 .what-examples p {
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-secondary);
     line-height: 1.8;
     margin-bottom: 8px;
@@ -543,7 +584,7 @@ html[lang="ko"] .system-type {
     padding: 14px 32px;
     background: var(--accent);
     color: #000;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     border-radius: 8px;
     transition: opacity 0.3s;
@@ -596,7 +637,7 @@ html[lang="ko"] .system-type {
 
 .connect-card-label {
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 0.08em;
     color: var(--accent);
     text-transform: uppercase;
@@ -611,7 +652,7 @@ html[lang="ko"] .system-type {
 }
 
 .connect-card-desc {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-secondary);
     line-height: 1.7;
     flex: 1;
@@ -671,7 +712,7 @@ html[lang="ko"] .system-type {
 .contact-cat-label {
     display: block;
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 0.08em;
     color: var(--accent);
     text-transform: uppercase;
@@ -679,7 +720,7 @@ html[lang="ko"] .system-type {
 }
 
 .contact-cat-text {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--text-secondary);
 }
 
@@ -697,7 +738,7 @@ html[lang="ko"] .system-type {
 
 .form-label {
     display: block;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--text-secondary);
     margin-bottom: 8px;
@@ -707,13 +748,13 @@ html[lang="ko"] .system-type {
 .form-textarea,
 .form-select {
     width: 100%;
-    padding: 12px 16px;
+    padding: 14px 16px;
     background: var(--bg-primary);
     border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--text-primary);
     font-family: inherit;
-    font-size: 15px;
+    font-size: 16px;
     transition: border-color 0.3s;
     outline: none;
 }
@@ -746,7 +787,7 @@ html[lang="ko"] .system-type {
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: 16px;
     pointer-events: none;
 }
 
@@ -757,13 +798,13 @@ html[lang="ko"] .system-type {
 
 .form-submit {
     width: 100%;
-    padding: 14px;
+    padding: 16px;
     background: var(--accent);
     color: #000;
     border: none;
     border-radius: 8px;
     font-family: inherit;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: opacity 0.3s;
@@ -808,7 +849,7 @@ html[lang="ko"] .system-type {
 }
 
 .contact-success p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 32px;
@@ -816,7 +857,7 @@ html[lang="ko"] .system-type {
 
 .success-back {
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
     color: var(--accent);
     transition: opacity 0.3s;
 }
@@ -855,7 +896,7 @@ html[lang="ko"] .system-type {
 }
 
 .footer-col a {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-secondary);
     transition: color 0.3s;
 }
@@ -868,7 +909,7 @@ html[lang="ko"] .system-type {
     padding-top: 20px;
     border-top: 1px solid var(--border);
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-muted);
 }
 
@@ -996,6 +1037,38 @@ html[lang="ko"] .system-type {
 
     .hero-scroll {
         display: none;
+    }
+
+    /* iOS recommended 17px for mobile */
+    .nav-lang,
+    .hero-problem-detail,
+    .hero-answer p,
+    .hero-status,
+    .section-sub,
+    .showcase-slide span,
+    .system-type,
+    .system-scenario,
+    .system-solution,
+    .system-link,
+    .what-problem,
+    .what-answer,
+    .what-examples p,
+    .what-cta,
+    .connect-card-label,
+    .connect-card-desc,
+    .contact-desc,
+    .contact-cat-label,
+    .contact-cat-text,
+    .form-label,
+    .form-input,
+    .form-textarea,
+    .form-select,
+    .form-submit,
+    .contact-success p,
+    .success-back,
+    .footer-col a,
+    .footer-bottom {
+        font-size: 17px;
     }
 }
 
