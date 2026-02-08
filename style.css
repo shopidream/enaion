@@ -537,6 +537,22 @@ html[lang="ko"] .system-type {
     margin-bottom: 0;
 }
 
+.what-cta {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 8px;
+    transition: opacity 0.3s;
+}
+
+.what-cta:hover {
+    opacity: 0.9;
+}
+
 /* ── Connect ── */
 .connect {
     padding: 140px 0;
