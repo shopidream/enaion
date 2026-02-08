@@ -21,21 +21,6 @@
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-theme="light"] {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f5f5f7;
-    --bg-card: #f5f5f7;
-    --bg-card-hover: #ebebed;
-    --border: #d1d1d6;
-    --border-light: #c7c7cc;
-    --text-primary: #1a1a1c;
-    --text-secondary: #3a3a3c;
-    --text-muted: #6a6a6c;
-    --accent: #0066cc;
-    --accent-dim: rgba(0, 102, 204, 0.1);
-    --accent-glow: rgba(0, 102, 204, 0.05);
-}
-
 /* Korean */
 html[lang="ko"] body,
 html[lang="ko"] .hero-problem,
@@ -99,10 +84,6 @@ a {
     padding: 14px 0;
 }
 
-[data-theme="light"] .nav-scrolled {
-    background: rgba(255, 255, 255, 0.88);
-}
-
 .nav-inner {
     max-width: 1080px;
     margin: 0 auto;
@@ -128,28 +109,9 @@ a {
     gap: 20px;
 }
 
-.theme-toggle {
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 4px 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.theme-toggle:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-}
-
 .nav-lang {
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0.08em;
     color: var(--text-muted);
     border: 1px solid var(--border);
@@ -165,7 +127,7 @@ a {
 
 .nav-contact {
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 15px;
     color: var(--text-muted);
     transition: color 0.3s;
 }
@@ -281,7 +243,7 @@ a {
     align-items: center;
     gap: 10px;
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-muted);
 }
 
@@ -304,7 +266,7 @@ a {
     align-items: center;
     gap: 8px;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 14px;
     color: var(--text-muted);
     letter-spacing: 0.1em;
 }
@@ -371,20 +333,12 @@ a {
     filter: brightness(1);
 }
 
-[data-theme="light"] .showcase-slide img {
-    filter: brightness(1);
-}
-
-[data-theme="light"] .showcase-slide:hover img {
-    filter: brightness(0.95);
-}
-
 .showcase-slide span {
     position: absolute;
     bottom: 12px;
     left: 16px;
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-primary);
     background: rgba(10, 10, 12, 0.7);
     backdrop-filter: blur(8px);
@@ -453,7 +407,7 @@ a {
 
 .system-type {
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 15px;
     color: var(--accent);
     margin-bottom: 24px;
     letter-spacing: 0.02em;
@@ -527,15 +481,6 @@ html[lang="ko"] .system-type {
     transform: scale(1.03);
 }
 
-[data-theme="light"] .visual-img {
-    filter: brightness(1);
-}
-
-[data-theme="light"] .system-card-inner:hover .visual-img {
-    filter: brightness(0.95);
-    transform: scale(1.03);
-}
-
 /* ── What We Do ── */
 .what-we-do {
     padding: 140px 0;
@@ -582,7 +527,7 @@ html[lang="ko"] .system-type {
 
 .what-examples p {
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-secondary);
     line-height: 1.8;
     margin-bottom: 8px;
@@ -651,7 +596,7 @@ html[lang="ko"] .system-type {
 
 .connect-card-label {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 14px;
     letter-spacing: 0.08em;
     color: var(--accent);
     text-transform: uppercase;
@@ -726,7 +671,7 @@ html[lang="ko"] .system-type {
 .contact-cat-label {
     display: block;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 14px;
     letter-spacing: 0.08em;
     color: var(--accent);
     text-transform: uppercase;
@@ -752,7 +697,7 @@ html[lang="ko"] .system-type {
 
 .form-label {
     display: block;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--text-secondary);
     margin-bottom: 8px;
@@ -801,7 +746,7 @@ html[lang="ko"] .system-type {
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-muted);
-    font-size: 12px;
+    font-size: 14px;
     pointer-events: none;
 }
 
@@ -923,7 +868,7 @@ html[lang="ko"] .system-type {
     padding-top: 20px;
     border-top: 1px solid var(--border);
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-muted);
 }
 
