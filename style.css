@@ -517,6 +517,26 @@ html[lang="ko"] .system-type {
     font-weight: 600;
 }
 
+.what-examples {
+    margin: 28px 0;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.what-examples p {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.what-examples p:last-child {
+    margin-bottom: 0;
+}
+
 /* ── Connect ── */
 .connect {
     padding: 140px 0;
