@@ -10,6 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 <body>
 
@@ -19,6 +27,9 @@
                 <img src="./assets/Enaion-White-Logo.png" alt="Enaion" class="nav-logo-img">
             </a>
             <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span id="themeIcon">🌙</span>
+                </button>
                 <a href="./contact-en.html" class="nav-lang" onclick="sessionStorage.setItem('lang_override','1')">EN</a>
                 <a href="mailto:info@enaion.com" class="nav-contact">info@enaion.com</a>
             </div>
@@ -109,6 +120,33 @@
     </footer>
 
     <script>
+        // Theme toggle
+        function updateTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            const icon = document.getElementById('themeIcon');
+            const logo = document.querySelector('.nav-logo-img');
+
+            if (theme === 'light') {
+                icon.textContent = '☀️';
+                logo.src = './assets/Enaion-Logo.png';
+            } else {
+                icon.textContent = '🌙';
+                logo.src = './assets/Enaion-White-Logo.png';
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        // Initialize theme UI
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        updateTheme(currentTheme);
+
+        // Toggle button
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const newTheme = current === 'light' ? 'dark' : 'light';
+            updateTheme(newTheme);
+        });
+
         // Set category from URL param
         const params = new URLSearchParams(window.location.search);
         const cat = params.get('cat');
