@@ -522,6 +522,12 @@ a {
     transform: scale(1.03);
 }
 
+/* Light mode button text */
+[data-theme="light"] .what-cta,
+[data-theme="light"] .form-submit {
+    color: #ffffff;
+}
+
 /* ── What We Do ── */
 .what-we-do {
     padding: 140px 0;
