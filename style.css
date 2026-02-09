@@ -892,7 +892,7 @@ a {
 
 .footer-brand-meaning {
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 500;
     color: var(--accent);
     letter-spacing: 0.1em;
@@ -900,7 +900,7 @@ a {
 }
 
 .footer-brand-desc {
-    font-size: 14px;
+    font-size: 17px;
     color: var(--text-secondary);
     margin-top: 4px;
 }
